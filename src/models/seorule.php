@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Config;
 
-class Seorule extends Eloquent {
+class Seorule extends \Eloquent {
 
     public function __construct(array $attributes = array())
     {

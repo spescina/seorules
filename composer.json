@@ -13,6 +13,10 @@
         "illuminate/support": "4.0.x"
     },
     "autoload": {
+        "classmap": [
+            "src/migrations",
+            "src/models"
+        ],
         "psr-0": {
             "Spescina\\Seorules": "src/"
         }

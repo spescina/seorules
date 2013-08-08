@@ -14,12 +14,26 @@ class SeorulesServiceProvider extends ServiceProvider {
     protected $defer = false;
 
     /**
+     * Bootstrap the application events.
+     *
+     * @return void
+     */
+    public function boot() {
+        $this->package('spescina/seorules');
+
+        include __DIR__ . '/../../routes.php';
+        include __DIR__ . '/../../filters.php';
+    }
+
+    /**
      * Register the service provider.
      *
      * @return void
      */
     public function register() {
-        $this->package('spescina/seorules');
+        $this->app['seo'] = $this->app->share(function($app) {
+                    return Seo::getInstance();
+                });
     }
 
     /**
@@ -28,7 +42,7 @@ class SeorulesServiceProvider extends ServiceProvider {
      * @return array
      */
     public function provides() {
-        return array();
+        return array('seo');
     }
 
 }
