@@ -1,0 +1,21 @@
+{
+    "name": "spescina/seorules",
+    "description": "A tool for building seo rules in your Laravel projects",
+    "keywords": ["seo", "page", "laravel", "database"],
+    "authors": [
+        {
+            "name": "Simone Pescina",
+            "email": "s.pescina@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "illuminate/support": "4.0.x"
+    },
+    "autoload": {
+        "psr-0": {
+            "Spescina\\Seorules": "src/"
+        }
+    },
+    "minimum-stability": "dev"
+}
