@@ -2,6 +2,6 @@
 
 Route::filter('seorules.seo', function() {
     
-    Seo::start();
+    Seo::init();
     
 });
