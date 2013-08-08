@@ -1,6 +1,6 @@
 <?php
 
-Route::filter('seorules.seo', function() {
+Route::filter('seorules.before', function() {
     
     Seo::init();
     

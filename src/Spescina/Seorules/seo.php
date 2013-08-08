@@ -3,6 +3,7 @@
 namespace Spescina\Seorules;
 
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\View;
 
 class Seo {
 
@@ -32,7 +33,7 @@ class Seo {
     }
 
     private function loadRules() {
-        $this->rules = Seorule::orderBy('priority', 'asc')->get();
+        $this->rules = Seorule::orderBy('priority', 'desc')->get();
     }
 
     private function loadCurrentRoute() {
@@ -45,7 +46,7 @@ class Seo {
 
     private function defineRule() {
         foreach ($this->rules as $rule) {
-            if (preg_match('^' . $rule->route . '^', $this->route) > 0) {
+            if ($rule->route == $this->route) {
                 if (!empty($rule->pattern)) {
                     $pattern = '^' . str_replace('/', '\/', $rule->pattern) . '^';
 
@@ -54,7 +55,7 @@ class Seo {
                     }
                 }
 
-                $this->rule = new Rule(array(
+                $this->definedRule = new Rule(array(
                     'title' => $rule->title,
                     'description' => $rule->description,
                     'keywords' => $rule->keywords,
@@ -74,7 +75,7 @@ class Seo {
         $this->preparedRule = $this->definedRule->prepare();
     }
     
-    public function getPreparedField($field) {
+    public function get($field) {
         return $this->preparedRule->getPreparedField($field);
     }
 }
