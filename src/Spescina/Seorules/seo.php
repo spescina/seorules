@@ -47,10 +47,8 @@ class Seo {
     private function defineRule() {
         foreach ($this->rules as $rule) {
             if ($rule->route == $this->route) {
-                if (!empty($rule->pattern)) {
-                    $pattern = '^' . str_replace('/', '\/', $rule->pattern) . '^';
-
-                    if (!preg_match($pattern, $this->url) > 0) {
+                if (!empty($rule->url)) {
+                    if ($rule->url == $this->url) {
                         continue;
                     }
                 }

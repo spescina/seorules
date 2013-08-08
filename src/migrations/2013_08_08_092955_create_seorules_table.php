@@ -16,7 +16,7 @@ class CreateSeorulesTable extends Migration {
         Schema::create($table, function($table) {
                     $table->increments('id');
                     $table->string('alias', 250);
-                    $table->string('pattern', 250);
+                    $table->string('url', 250);
                     $table->string('route', 250);
                     $table->string('title', 250);
                     $table->string('description', 250);

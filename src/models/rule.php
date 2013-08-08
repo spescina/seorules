@@ -29,7 +29,7 @@ class Rule {
         $preparedRule = $this;
         
         foreach ($this->fields as $field => $value) {
-            if (($field <> 'pattern') && ($field <> 'noindex')) {
+            if (($field <> 'url') && ($field <> 'noindex')) {
                 if (count($this->substitutions)) {
                     foreach ($this->substitutions as $placeholder) {
                         $search = self::buildPlaceholderString($placeholder->getPlaceholder(), Config::get('seorules::seorules.placeholder'));
