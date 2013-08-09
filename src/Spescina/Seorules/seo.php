@@ -3,7 +3,6 @@
 namespace Spescina\Seorules;
 
 use Illuminate\Support\Facades\Config;
-use Illuminate\Support\Facades\View;
 
 class Seo {
 
@@ -13,6 +12,7 @@ class Seo {
     private $preparedRule;
     private $route;
     private $url;
+    private $prepared = false;
 
     static function getInstance() {
         if (self::$instance === false) {
@@ -71,9 +71,15 @@ class Seo {
 
     public function prepareRule() {
         $this->preparedRule = $this->definedRule->prepare();
+        
+        $this->prepared = true;
     }
     
     public function get($field) {
+        if (!$this->prepared) {
+            $this->prepareRule();
+        }
+        
         return $this->preparedRule->getPreparedField($field);
     }
 }

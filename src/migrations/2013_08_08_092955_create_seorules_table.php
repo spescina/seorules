@@ -11,9 +11,7 @@ class CreateSeorulesTable extends Migration {
      * @return void
      */
     public function up() {
-        $table = Config::get('seorules::database.table');
-        
-        Schema::create($table, function($table) {
+        Schema::create(Config::get('seorules::database.table'), function($table) {
                     $table->increments('id');
                     $table->string('alias', 250);
                     $table->string('url', 250);
