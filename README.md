@@ -12,6 +12,10 @@ Once it's installed, you have to register the service provider. In `app/config/a
 ```php
 'Spescina\Seorules\SeorulesServiceProvider'
 ```
+If you want in `app/config/app.php` add the following line of code to the `alias` array
+```php
+'Seo' => 'Spescina\Seorules\Seo'
+```
 Then, publish the config files with `php artisan config:publish spescina/seorules`.
 
 The last thing to do is to run the startup migration with `php artisan migrate --package="spescina/seorules"`.
@@ -67,8 +71,6 @@ Manage your rules in your controllers or in your closures
 ```php
 Seo::addPlaceholder('first_placeholder','Foo');
 Seo::addPlaceholder('second_placeholder','Bar');
-        
-Seo::prepareRule();
 ```
 Display prepared fields in your views
 ```php
