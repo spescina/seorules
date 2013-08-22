@@ -41,14 +41,14 @@ class Seo {
     }
 
     private function loadCurrentUrl() {
-        $this->url = \Request::url();
+        $this->url = \Request::path();
     }
 
     private function defineRule() {
         foreach ($this->rules as $rule) {
             if ($rule->route == $this->route) {
                 if (!empty($rule->url)) {
-                    if ($rule->url == $this->url) {
+                    if ($rule->url != $this->url) {
                         continue;
                     }
                 }
