@@ -34,8 +34,8 @@ class Rule {
                     foreach ($this->substitutions as $placeholder) {
                         $search = self::buildPlaceholderString($placeholder->getPlaceholder(), Config::get('seorules::seorules.placeholder'));
                         
-                        if (strpos($value, $search) !== false) {
-                            $preparedRule->fields[$field] = self::replacePlaceholder($search, $placeholder->getContent(), $value);
+                        if (strpos($this->fields[$field], $search) !== false) {
+                            $preparedRule->fields[$field] = self::replacePlaceholder($search, $placeholder->getContent(), $this->fields[$field]);
                         }
                     }
                 }
