@@ -17,7 +17,7 @@ class CreateSeorulesTable extends Migration {
                     $table->string('url', 250);
                     $table->string('route', 250);
                     $table->string('title', 250);
-                    $table->string('description', 250);
+                    $table->text('description');
                     $table->text('keywords');
                     $table->boolean('noindex');
                     $table->integer('priority');
