@@ -24,7 +24,7 @@ The last thing to do is to run the startup migration with `php artisan migrate -
 Define your rules creating entries in the seorules database table
 * __alias__: system identificative name of the rule
 * __route__: name of the target route
-* __url__: target url (used for targeting different pages on the same route)
+* __pattern__: regular expression for matching page url (used for targeting different pages on the same route)
 * __priority__: highest value come first
 * __title__: title tag
 * __description__: description meta tag
@@ -35,7 +35,7 @@ Define your rules creating entries in the seorules database table
 {
   alias: 'first',
   route: 'first.route',
-  url: '',
+  pattern: '',
   priority: 0,
   title: 'the first route title is [#_first_placeholder]',
   description: 'my first route description is [#_second_placeholder]',
@@ -45,7 +45,7 @@ Define your rules creating entries in the seorules database table
 {
   alias: 'second',
   route: 'second.route',
-  url: '',
+  pattern: '',
   priority: 0,
   title: 'the second route title is [#_second_placeholder]',
   description: 'my second route description is empty',
