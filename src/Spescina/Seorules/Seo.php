@@ -41,7 +41,7 @@ class Seo {
     }
 
     private function loadCurrentUrl() {
-        $this->url = \Request::path();
+        $this->url = \Request::fullUrl();
     }
 
     private function defineRule() {
