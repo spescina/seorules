@@ -59,7 +59,7 @@ class Rule {
     }
 
     private static function buildPlaceholderString($placeholderLabel, $placeholderPattern) {
-        return str_replace("placeholder", strtolower($placeholderLabel), $placeholderPattern);
+        return str_replace("placeholder", $placeholderLabel, $placeholderPattern);
     }
 
     private static function replacePlaceholder($search, $replace, $subject) {
