@@ -48,7 +48,7 @@ class Seo {
         foreach ($this->rules as $rule) {
             if ($rule->route == $this->route) {
                 if (!empty($rule->pattern)) {
-                    if (!preg_match("/{$rule->pattern}/", $this->url)) {
+                    if (!preg_match("|{$rule->pattern}|", $this->url)) {
                         continue;
                     }
                 }
