@@ -2,12 +2,10 @@
 
 namespace Spescina\Seorules;
 
-use Illuminate\Support\Facades\Config;
-
 class Rule {
 
-    private $substitutions = array();
-    private $fields = array();
+    private $substitutions = [];
+    private $fields = [];
 
     public function __construct(Array $data = null) {
         if ($data) {
@@ -33,7 +31,7 @@ class Rule {
                 
                 if (count($this->substitutions)) {
                     foreach ($this->substitutions as $placeholder) {
-                        $search = self::buildPlaceholderString($placeholder->getPlaceholder(), Config::get('seorules::seorules.placeholder'));
+                        $search = self::buildPlaceholderString($placeholder->getPlaceholder(), config('seorules.placeholder'));
                         
                         if (strpos($this->fields[$field], $search) !== false) {
                             $preparedRule->fields[$field] = self::replacePlaceholder($search, $placeholder->getContent(), $this->fields[$field]);

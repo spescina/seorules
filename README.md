@@ -2,23 +2,22 @@
 A package for building seo rules in your Laravel projects. Manage with ease SEO meta tags _(title, description, keywords, noindex)_ of your pages.
 
 ## Installation
-To install __Seorules__ as a Composer package to be used with Laravel 4, simply add this to your `composer.json`:
-```javascript
-"spescina/seorules": "dev-master"
-```
-and run composer update.
+To install __Seorules__ in Laravel 5.1, simply run `composer require spescina\seorules`.  
+To install __Seorules__ in Laravel 4, simply run `composer require spescina\seorules 1.*`.  
 
-Once it's installed, you have to register the service provider. In `app/config/app.php` add the following line of code to the `providers` array:
-```php
-'Spescina\Seorules\SeorulesServiceProvider'
-```
-If you want in `app/config/app.php` add the following line of code to the `alias` array
-```php
-'Seo' => 'Spescina\Seorules\Facades\Seo'
-```
-Then, publish the config files with `php artisan config:publish spescina/seorules`.
+Once it's installed, you have to register the service provider. In `app/config/app.php` add the following line of code to the `providers` array  
+`Spescina\Seorules\SeorulesServiceProvider::class`.
+  
+If you want in `app/config/app.php` add the following line of code to the `aliases` array  
+`'Seo' => Spescina\Seorules\Facades\Seo::class`.
+  
+Register the route middleware adding these line to the `app/Http/Kernel.php` file  
+`'seorules.before' => \Spescina\Seorules\Init::class`.  
 
-The last thing to do is to run the startup migration with `php artisan migrate --package="spescina/seorules"`.
+Then, publish the config file with `php artisan vendor:publish --provider="Spescina\Seorules\SeorulesServiceProvider" --tag="config"` .  
+Then, publish the migration file with `php artisan vendor:publish --provider="Spescina\Seorules\SeorulesServiceProvider" --tag="migrations"` .  
+
+Then run the migration with `php artisan migrate`.  
 
 ## Usage
 Define your rules creating entries in the seorules database table
@@ -54,9 +53,9 @@ Define your rules creating entries in the seorules database table
 }
 ```
 
-Attach `seorules.before` filter to your target named routes (route groups are reccomended)
+Attach `seorules.before` middleware to your target named routes (route groups are reccomended)
 ```php
-Route::group(array('before' => 'seorules.before'), function()
+Route::group(['middleware' => 'seorules.before'], function()
 {
     Route::get('/first', array('as' => 'first.route', function(){
         //do things

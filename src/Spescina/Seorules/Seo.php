@@ -2,8 +2,6 @@
 
 namespace Spescina\Seorules;
 
-use Illuminate\Support\Facades\Config;
-
 class Seo {
 
     private static $instance = false;
@@ -23,7 +21,7 @@ class Seo {
     }
 
     public function init() {
-        $this->definedRule = new Rule(Config::get('seorules::seorules.rule'));
+        $this->definedRule = new Rule(config('seorules.rule'));
         
         $this->loadRules();
         $this->loadCurrentRoute();
