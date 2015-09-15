@@ -2,6 +2,7 @@
 
 namespace Spescina\Seorules;
 
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 
 class SeorulesServiceProvider extends ServiceProvider {
@@ -19,10 +20,15 @@ class SeorulesServiceProvider extends ServiceProvider {
      * @return void
      */
     public function boot() {
-        $this->package('spescina/seorules');
 
-        include __DIR__ . '/../../routes.php';
-        include __DIR__ . '/../../filters.php';
+        $this->publishes([
+            __DIR__.'/../../config/seorules.php' => config_path('seorules.php')
+        ], 'config');
+
+        $this->publishes([
+            __DIR__.'/../../migrations/' => database_path('migrations')
+        ], 'migrations');
+
     }
 
     /**
@@ -32,8 +38,8 @@ class SeorulesServiceProvider extends ServiceProvider {
      */
     public function register() {
         $this->app['seo'] = $this->app->share(function($app) {
-                    return Seo::getInstance();
-                });
+            return Seo::getInstance();
+        });
     }
 
     /**
@@ -42,7 +48,7 @@ class SeorulesServiceProvider extends ServiceProvider {
      * @return array
      */
     public function provides() {
-        return array('seo');
+        return ['seo'];
     }
 
 }

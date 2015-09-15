@@ -1,16 +1,16 @@
 <?php   namespace Spescina\Seorules;
 
-use Illuminate\Support\Facades\Config;
+use Illuminate\Database\Eloquent\Model;
 
-class Seorule extends \Eloquent {
+class Seorule extends Model {
     
     public $timestamps = false;
 
-    public function __construct(array $attributes = array())
+    public function __construct(array $attributes = [])
     {
         parent::__construct($attributes);
 
-        $this->table = Config::get('seorules::database.table');
+        $this->table = config('seorules.table');
     }
 
 }
