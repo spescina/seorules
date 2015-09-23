@@ -8,5 +8,6 @@ return [
         'keywords' => 'your application seo keywords',
         'noindex' => 0
     ),
+    'model' => 'Spescina\Seorules\Seorule',
     'table' => 'seorules'
 ];
