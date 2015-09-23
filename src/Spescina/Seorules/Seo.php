@@ -31,7 +31,8 @@ class Seo {
     }
 
     private function loadRules() {
-        $this->rules = Seorule::orderBy('priority', 'desc')->get();
+        $modelClass = Config::get('seorules::seorules.model');
+        $this->rules = $modelClass::orderBy('priority', 'desc')->get();
     }
 
     private function loadCurrentRoute() {
