@@ -3,7 +3,7 @@ A package for building seo rules in your Laravel projects. Manage with ease SEO 
 
 ## Installation
 To install __Seorules__ in Laravel 5.1, simply run `composer require spescina\seorules`.  
-To install __Seorules__ in Laravel 4, simply run `composer require spescina\seorules 1.*`.  
+To install __Seorules__ in Laravel 4, simply run `composer require spescina\seorules 1.*` and then follow [these](https://github.com/spescina/seorules/blob/v1/README.md) instructions.
 
 Once it's installed, you have to register the service provider. In `app/config/app.php` add the following line of code to the `providers` array  
 `Spescina\Seorules\SeorulesServiceProvider::class`.
