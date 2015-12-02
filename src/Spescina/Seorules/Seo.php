@@ -31,7 +31,7 @@ class Seo {
     }
 
     private function loadRules() {
-        $modelClass = Config::get('seorules::seorules.model');
+        $modelClass = \Config::get('seorules.model');
         $this->rules = $modelClass::orderBy('priority', 'desc')->get();
     }
 
