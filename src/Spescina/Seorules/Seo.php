@@ -43,7 +43,7 @@ class Seo {
         $this->url = \Request::fullUrl();
     }
 
-    private function defineRule() {
+    public function defineRule() {
         foreach ($this->rules as $rule) {
             if ($rule->route == $this->route) {
                 if (!empty($rule->pattern)) {
@@ -80,5 +80,10 @@ class Seo {
         }
         
         return $this->preparedRule->getPreparedField($field);
+    }
+    
+    public function setRoute($route)
+    {
+        $this->route = $route;
     }
 }
